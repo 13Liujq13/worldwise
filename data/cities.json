@@ -35,6 +35,78 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
+    },
+    {
+      "cityName": "Sernancelhe",
+      "country": "Portugal",
+      "emoji": "🇵🇹",
+      "date": "2025-08-28T10:21:59.643Z",
+      "notes": "124",
+      "position": {
+        "lat": "40.947809067311844",
+        "lng": "-7.470663384171453"
+      },
+      "id": 98443198
+    },
+    {
+      "cityName": "Chengdu",
+      "country": "China",
+      "emoji": "🇨🇳",
+      "date": "2025-08-28T10:23:44.564Z",
+      "notes": "1234",
+      "position": {
+        "lat": "30.65962719193574",
+        "lng": "104.0634442304169"
+      },
+      "id": 98443199
+    },
+    {
+      "cityName": "Shuili",
+      "country": "Taiwan (Province of China)",
+      "emoji": "🇹🇼",
+      "date": "2025-08-28T10:29:34.172Z",
+      "notes": "tre",
+      "position": {
+        "lat": "23.809516591671986",
+        "lng": "120.91543573949087"
+      },
+      "id": 98443200
+    },
+    {
+      "cityName": "Navalpino",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2025-08-28T10:29:45.524Z",
+      "notes": "wqer",
+      "position": {
+        "lat": "39.199866834200925",
+        "lng": "-4.636205551645261"
+      },
+      "id": 98443201
+    },
+    {
+      "cityName": "Josa i Tuixen",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2025-08-28T10:30:53.045Z",
+      "notes": "",
+      "position": {
+        "lat": "42.27798205233216",
+        "lng": "1.6479412708546581"
+      },
+      "id": 98443202
+    },
+    {
+      "cityName": "Villarmayor",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2025-08-28T10:32:54.323Z",
+      "notes": "",
+      "position": {
+        "lat": "41.0605323744606",
+        "lng": "-5.932585375639994"
+      },
+      "id": 98443203
     }
   ]
 }
