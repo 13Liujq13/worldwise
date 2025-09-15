@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useEffect, useContext } from 'react';
 
-const BASE_URL = "http://localhost:9000";
+const BASE_URL = 'http://localhost:9000';
 const CitiesContext = createContext();
 
 function CitiesProvider({ children }) {
@@ -42,10 +42,10 @@ function CitiesProvider({ children }) {
     try {
       setIsLoading(true);
       const res = await fetch(`${BASE_URL}/cities`, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify(newCity),
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
       const data = await res.json();
@@ -56,10 +56,29 @@ function CitiesProvider({ children }) {
       setIsLoading(false);
     }
   }
-
+  async function deleteCity(id) {
+    try {
+      setIsLoading(true);
+      await fetch(`${BASE_URL}/cities/${id}`, {
+        method: 'DELETE',
+      });
+      setCities((cities) => cities.filter((city) => city.id !== id));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }
   return (
     <CitiesContext.Provider
-      value={{ cities, isLoading, currentCity, getCity, createCity }}
+      value={{
+        cities,
+        isLoading,
+        currentCity,
+        getCity,
+        createCity,
+        deleteCity,
+      }}
     >
       {children}
     </CitiesContext.Provider>
@@ -68,7 +87,7 @@ function CitiesProvider({ children }) {
 function useCities() {
   const context = useContext(CitiesContext);
   if (context === undefined)
-    throw new Error("CitiesContext was used outside of the CitiesProvider");
+    throw new Error('CitiesContext was used outside of the CitiesProvider');
   return context;
 }
 
