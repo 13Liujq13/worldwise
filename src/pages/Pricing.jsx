@@ -9,13 +9,13 @@ export default function Product() {
       <section>
         <div>
           <h2>
-            Simple pricing.
+            简单定价。
             <br />
-            Just $9/month.
+            只需 ¥5/月。
           </h2>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae vel
-            labore mollitia iusto. Recusandae quos provident, laboriosam fugit
+            labore molliti a iusto. Recusandae quos provident, laboriosam fugit
             voluptatem iste.
           </p>
         </div>

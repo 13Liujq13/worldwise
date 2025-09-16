@@ -9,14 +9,14 @@ function PageNav() {
       </NavLink>
       <ul>
         <li>
-          <NavLink to="/product">Product</NavLink>
+          <NavLink to="/product">产品</NavLink>
         </li>
         <li>
-          <NavLink to="/pricing">Pricing</NavLink>
+          <NavLink to="/pricing">定价</NavLink>
         </li>
         <li>
           <NavLink to="/login" className={styles.ctaLink}>
-            Login
+            登录
           </NavLink>
         </li>
       </ul>

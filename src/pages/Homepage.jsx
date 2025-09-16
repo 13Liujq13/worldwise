@@ -8,17 +8,19 @@ export default function Homepage() {
       <PageNav />
       <section>
         <h1>
-          You travel the world.
+          你游历世界
           <br />
-          WorldWise keeps track of your adventures.
+          WorldWise 会追踪您的冒险经历
         </h1>
         <h2>
-          A world map that tracks your footsteps into every city you can think
-          of. Never forget your wonderful experiences, and show your friends how
-          you have wandered the world.
+          一张世界地图
+          <br />
+          追踪你的足迹 走遍你能想到的每一座城市
+          <br />
+          永远铭记你的精彩经历 并向你的朋友们展示你是如何游历世界的
         </h2>
         <Link to="/login" className="cta">
-          START TRACKING NOW
+          现在开始追踪你的足迹
         </Link>
       </section>
     </main>
