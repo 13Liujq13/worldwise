@@ -1,18 +1,18 @@
-import styles from "./City.module.css";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useCities } from "../context/CitiesContext";
-import Spinner from "./Spinner";
-import BackButton from "./BackButton";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import styles from './City.module.css';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useCities } from '../context/CitiesContext';
+import Spinner from './Spinner';
+import BackButton from './BackButton';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 const formatDate = (date) =>
-  new Intl.DateTimeFormat("en", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    weekday: "long",
+  new Intl.DateTimeFormat('en', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    weekday: 'long',
   }).format(new Date(date));
 
 function City() {
@@ -23,7 +23,7 @@ function City() {
 
   useEffect(() => {
     getCity(id);
-  }, [id]);
+  }, [id, getCity]);
 
   if (isLoading) return <Spinner />;
 
@@ -67,7 +67,7 @@ function City() {
               center={[position.lat, position.lng]}
               zoom={13}
               scrollWheelZoom={false}
-              style={{ height: "300px", width: "100%" }}
+              style={{ height: '300px', width: '100%' }}
             >
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
