@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import styles from "./Map.module.css";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";

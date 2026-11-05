@@ -15,7 +15,11 @@ module.exports = {
     "no-unused-vars": "off",
     "react-refresh/only-export-components": [
       "warn",
-      { allowConstantExport: true },
+      {
+        allowConstantExport: true,
+        // Context 文件按惯例同时导出 Provider 组件与配套 Hook
+        allowExportNames: ["useCities", "useAuth"],
+      },
     ],
   },
 };

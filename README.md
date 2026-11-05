@@ -62,7 +62,7 @@
 - 🧩 **嵌套路由 + 布局复用**：`AppLayout` 作为外壳（侧边栏 / 地图 / 用户区），子路由通过 `<Outlet />` 渲染
 - 🎨 **CSS Modules 样式隔离**：20 个 `.module.css` 按组件粒度切分，配合全局 CSS 变量统一主题
 - 🧠 **状态分层设计**：URL 参数、Context、组件局部状态各司其职，不引入任何额外状态管理库
-- 🧪 **开发期质量门禁**：Vite 集成 ESLint 插件，开发时即时报错；`npm run lint` 零警告为合并标准
+- 🧪 **开发期质量门禁**：Vite 集成 ESLint 插件，开发时即时报错；`npm run lint` 实测 **0 error / 0 warning**
 - ⚙️ **环境变量化 API 地址**：后端地址走 `VITE_API_URL`，同一份代码可在本地与线上运行
 
 ---
@@ -141,7 +141,7 @@ export function useURLPosition() {
 拿到国家代码（如 `ES`）后，把它映射到 Unicode 的「区域指示符符号」，两个字母拼起来就是国旗：
 
 ```js
-// src/components/Form.jsx
+// src/utils/convertToEmoji.js
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
     .toUpperCase()
@@ -235,6 +235,8 @@ worldwise/
 │   ├── hooks/
 │   │   ├── useGeolocation.jsx              # 浏览器定位封装
 │   │   └── useURLPosition.jsx              # 读取 URL 中的经纬度
+│   ├── utils/
+│   │   └── convertToEmoji.js               # 国家代码 → 国旗 emoji（纯函数）
 │   └── pages/
 │       ├── Homepage.jsx / Product.jsx / Pricing.jsx   # 落地与营销页
 │       ├── Login.jsx                       # 登录页
@@ -313,7 +315,7 @@ npm run build     # 产物在 dist/
 
 - **样式作用域**：组件样式统一走 `*.module.css`，类名哈希隔离；主题色集中在 `:root` 的 7 个 CSS 变量里，换肤只改一处。
 - **代码分割边界**：路由级 `lazy` 是主分割点，第三方库通过 `manualChunks` 进一步拆分为 vendor chunk。
-- **ESLint**：`eslint:recommended` + `react` + `react-hooks` + `react-refresh`，由 `vite-plugin-eslint` 在开发期即时反馈。
+- **ESLint**：`eslint:recommended` + `react` + `react-hooks` + `react-refresh`，由 `vite-plugin-eslint` 在开发期即时反馈；纯函数与工具代码外移到 `src/utils/`，保证组件文件只导出组件，`npm run lint` 保持 0 error / 0 warning。
 - **一次完整的「可运行 → 可部署」修复**：统一了 5 处 Windows/macOS 与 Linux 大小写不一致的 import 路径（否则 Linux 构建失败）、修复了从 `react-router-dom` 误导入 React API 导致的白屏、补全了登出逻辑、把硬编码的 API 地址改为环境变量。
 
 ---
