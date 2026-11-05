@@ -7,7 +7,9 @@ import {
   useCallback,
 } from 'react';
 
-const BASE_URL = 'http://localhost:9000';
+const BASE_URL = (
+  import.meta.env.VITE_API_URL || 'http://localhost:9000'
+).replace(/\/$/, '');
 const CitiesContext = createContext();
 
 function CitiesProvider({ children }) {
@@ -31,21 +33,19 @@ function CitiesProvider({ children }) {
     fetchCities();
   }, []);
 
-  const getCity = useCallback(
-    async function getCity(id) {
-      try {
-        setIsLoading(true);
-        const res = await fetch(`${BASE_URL}/cities/${id}`);
-        const data = await res.json();
-        setCurrentCity(data);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    [currentCity.id]
-  );
+  const getCity = useCallback(async function getCity(id) {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`${BASE_URL}/cities/${id}`);
+      if (!res.ok) throw new Error(`City ${id} not found`);
+      const data = await res.json();
+      setCurrentCity(data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
 
   async function createCity(newCity) {
     try {

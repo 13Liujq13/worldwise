@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, lazy, Suspense } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import Product from './pages/Product';
 // import HomePage from './pages/HomePage';
 // import PageNotFound from './pages/PageNotFound';
@@ -13,7 +14,7 @@ import { CitiesProvider } from './context/CitiesContext';
 import { AuthProvider } from './context/FeakAuthContext';
 import ProtectRoute from './pages/ProtectRoute';
 import Spinner from './components/Spinner';
-const HomePage = lazy(() => import('./pages/HomePage'));
+const HomePage = lazy(() => import('./pages/Homepage'));
 const Product = lazy(() => import('./pages/Product'));
 const Pricing = lazy(() => import('./pages/Pricing'));
 const AppLayout = lazy(() => import('./pages/appLayout'));
