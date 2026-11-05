@@ -309,27 +309,7 @@ npm run build     # 产物在 dist/
 1. **SPA 回退**：需要把所有未知路径回退到 `index.html`（Vercel 默认支持；Netlify 需 `/* /index.html 200`）。
 2. **API 地址**：线上需配置环境变量 `VITE_API_URL` 指向一个可访问的 API。`json-server` 只适合本地开发，线上可以把它跑在 Render / Railway 上，或改用 Supabase、MockAPI 等服务替代。
 
----
 
-## 工程规范与改进
-
-- **样式作用域**：组件样式统一走 `*.module.css`，类名哈希隔离；主题色集中在 `:root` 的 7 个 CSS 变量里，换肤只改一处。
-- **代码分割边界**：路由级 `lazy` 是主分割点，第三方库通过 `manualChunks` 进一步拆分为 vendor chunk。
-- **ESLint**：`eslint:recommended` + `react` + `react-hooks` + `react-refresh`，由 `vite-plugin-eslint` 在开发期即时反馈；纯函数与工具代码外移到 `src/utils/`，保证组件文件只导出组件，`npm run lint` 保持 0 error / 0 warning。
-- **一次完整的「可运行 → 可部署」修复**：统一了 5 处 Windows/macOS 与 Linux 大小写不一致的 import 路径（否则 Linux 构建失败）、修复了从 `react-router-dom` 误导入 React API 导致的白屏、补全了登出逻辑、把硬编码的 API 地址改为环境变量。
-
----
-
-## 已知限制与迭代计划
-
-项目定位为**个人练习 + 作品集**，以下是为后续迭代整理的技术债清单：
-
-- [ ] **请求竞态**：快速切换城市详情时，先发的响应可能后到并覆盖新数据 → `AbortController` 或 TanStack Query
-- [ ] **错误处理偏弱**：`catch` 中仅 `console.log`，缺少用户可见的错误提示与 Error Boundary
-- [ ] **无测试**：计划用 Vitest + Testing Library 覆盖 `convertToEmoji`、`CitiesContext` 与路由守卫
-- [ ] **无响应式适配**：当前为桌面端布局，移动端需补充断点
-- [ ] **配置冗余**：`.eslintrc.cjs` 与 `.eslintrc.json` 并存，建议只保留其一
-- [ ] **真实后端 / 多用户**：当前为单用户 + JSON 文件存储，可迁移至 Supabase 或 Node/Express + PostgreSQL 实现账号隔离
 
 ---
 
